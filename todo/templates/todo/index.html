@@ -3,7 +3,7 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Todo List</h1>
-    <a href="#" class="btn btn-primary">Add Task</a>
+    <a href="{% url 'todo:task-create' %}" class="btn btn-primary">Add Task</a>
 </div>
 
 {% for task in tasks %}
@@ -17,9 +17,9 @@
                         {% for tag in task.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
                     </span>
                 </h5>
-                <p class="card-text text-muted mb-1">Created: {{ task.created_at|date:"M d, Y, g:i a" }}</p>
+                <p class="card-text text-muted mb-1 small">Created: {{ task.created_at|date:"M d, Y, g:i a" }}</p>
                 {% if task.deadline %}
-                <p class="card-text text-danger mb-1">Deadline: {{ task.deadline|date:"M d, Y, g:i a" }}</p>
+                <p class="card-text text-danger mb-1 small fw-bold">Deadline: {{ task.deadline|date:"M d, Y, g:i a" }}</p>
                 {% endif %}
                 <p class="card-text">
                     Status: 
@@ -34,18 +34,20 @@
                 <form action="{% url 'todo:task-toggle' task.id %}" method="post" class="mb-2">
                     {% csrf_token %}
                     {% if task.is_done %}
-                    <button type="submit" class="btn btn-outline-secondary btn-sm">Undo</button>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm w-100">Undo</button>
                     {% else %}
-                    <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                    <button type="submit" class="btn btn-success btn-sm w-100">Complete</button>
                     {% endif %}
                 </form>
                 <div>
-                    <a href="#" class="btn btn-link btn-sm text-primary p-0 me-2">Update</a>
-                    <a href="#" class="btn btn-link btn-sm text-danger p-0">Delete</a>
+                    <a href="{% url 'todo:task-update' task.id %}" class="btn btn-link btn-sm text-primary p-0 me-2">Update</a>
+                    <a href="{% url 'todo:task-delete' task.id %}" class="btn btn-link btn-sm text-danger p-0">Delete</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% empty %}
+<p class="text-center">No tasks for today! Enjoy your rest.</p>
 {% endfor %}
 {% endblock %}
