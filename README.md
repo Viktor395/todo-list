@@ -1,20 +1,23 @@
 # Todo List App
 
 
-## Функціонал
-* Створення, редагування та видалення завдань.
-* Керування тегами (CRUD).
-* Відмітка про виконання завдання (Toggle status) без переходу на іншу сторінку.
-* Сортування: спочатку невиконані, потім за датою створення.
+## Features
+* **Tasks CRUD**: Create, read, update, and delete tasks.
+* **Tag Management**: Organize tasks using customizable tags.
+* **Status Toggle**: Quickly mark tasks as "Done" or "Not done" directly from the list.
+* **Smart Sorting**: Tasks are sorted by completion status (undone first) and then by creation date.
+* **Responsive Design**: Styled with Bootstrap 5 for a clean look on all devices.
 
-## Технології
-* Python / Django
-* PostgreSQL (на сервері) / SQLite (локально)
-* Bootstrap 5
-* WhiteNoise (для статики)
+## Tech Stack
+* **Language**: Python 3.13
+* **Framework**: Django 5.1
+* **Database**: PostgreSQL (Production), SQLite (Development)
+* **Styling**: Bootstrap 5
+* **Static Files**: WhiteNoise
 
-## Як запустити локально
+## Local Setup
 
-1. Клонуйте репозиторій:
+1. **Clone the repository**:
    ```bash
    git clone <https://github.com/Viktor395/todo-list.git>
+
